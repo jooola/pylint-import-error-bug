@@ -1,0 +1,31 @@
+diff --git a/run.sh b/run.sh
+index d24525a..ecdde62 100755
+--- a/run.sh
++++ b/run.sh
+@@ -4,7 +4,7 @@ cd test-app
+ 
+ python3 -m venv .venv
+ source .venv/bin/activate
+-pip install --upgrade pip setuptools wheel
++pip install --upgrade pip 'setuptools<64' wheel
+ pip install pylint
+ pip install \
+     --editable ../shared-lib \
+diff --git a/shared-lib/pyproject.toml b/shared-lib/pyproject.toml
+index 9787c3b..a859a59 100644
+--- a/shared-lib/pyproject.toml
++++ b/shared-lib/pyproject.toml
+@@ -1,3 +1,3 @@
+ [build-system]
+-requires = ["setuptools", "wheel"]
++requires = ["setuptools<64", "wheel"]
+ build-backend = "setuptools.build_meta"
+diff --git a/test-app/pyproject.toml b/test-app/pyproject.toml
+index 9787c3b..a859a59 100644
+--- a/test-app/pyproject.toml
++++ b/test-app/pyproject.toml
+@@ -1,3 +1,3 @@
+ [build-system]
+-requires = ["setuptools", "wheel"]
++requires = ["setuptools<64", "wheel"]
+ build-backend = "setuptools.build_meta"
